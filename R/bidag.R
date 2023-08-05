@@ -46,7 +46,7 @@ bidag_ps <- function(data,
                       max(min_iterations,
                           ceiling(mult * p^2 / log(p))))
 
-    iter <- bidag::iterativeMCMC(scorepar = scorepar,
+    iter <- bidag2::iterativeMCMC(scorepar = scorepar,
                                  MAP = FALSE,
                                  posterior = plus1post,
                                  plus1it = plus1it,
@@ -77,7 +77,7 @@ bidag_ps <- function(data,
 
   if (bidag_type == "order"){
 
-    mcmc <- bidag::orderMCMC(scorepar = scorepar,
+    mcmc <- bidag2::orderMCMC(scorepar = scorepar,
                              MAP = FALSE,
                              plus1 = TRUE,
                              chainout = TRUE,
@@ -90,7 +90,7 @@ bidag_ps <- function(data,
                              verbose = debug >= 3)
   } else{
 
-    mcmc <- bidag::partitionMCMC(scorepar = scorepar,
+    mcmc <- bidag2::partitionMCMC(scorepar = scorepar,
                                  iterations = iterations,
                                  stepsave = stepsave,
                                  startspace = startspace,
