@@ -529,7 +529,7 @@ ribn <- function(x,
   ## generate observational data if no intervention specified
   if (missing(intervene) || is.null(intervene) || length(intervene) == 0){
 
-    return(bnlearn:::rbn.backend(x = x, n = n, fix = fix,
+    return(bnlearn:::.rbn.backend(x = x, n = n, fix = fix,
                                  debug = debug >= 4))
   }
 
@@ -605,7 +605,7 @@ ribn <- function(x,
     xi <- bn_list2bn.fit(xi)
 
     ## return interventional data
-    bnlearn:::rbn.backend(x = xi, n = int$n, fix = fix,
+    bnlearn:::.rbn.backend(x = xi, n = int$n, fix = fix,
                           debug = debug >= 4)
   })
 
