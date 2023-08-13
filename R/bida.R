@@ -215,13 +215,10 @@ compute_ps <- function(data,
   ## calculate parent support using the APS solver
   start_time <- Sys.time()
   aps_type <- "modular"
-  print(aps_dir)
-  print(temp_file)
   sys::exec_internal(cmd = sprintf("%s/aps", aps_dir),
                      args = c(aps_type,
                               sprintf("%s_%s", temp_file,
                                       c("score", "support"))))
-  browser()
   end_time <- Sys.time()
   aps_time <- as.numeric(end_time - start_time, units = "secs")
 
