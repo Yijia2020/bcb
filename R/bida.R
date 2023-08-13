@@ -215,10 +215,20 @@ compute_ps <- function(data,
   ## calculate parent support using the APS solver
   start_time <- Sys.time()
   aps_type <- "modular"
-  sys::exec_internal(cmd = sprintf("%s/aps", aps_dir),
-                     args = c(aps_type,
-                              sprintf("%s_%s", temp_file,
-                                      c("score", "support"))))
+  
+  # Define the command and arguments
+  command <- sprintf("%s/aps", aps_dir)
+  args <- c(aps_type, sprintf("%s_%s", temp_file, c("score", "support")))
+  
+  # Set execute permission using system command
+  system(paste("chmod +x", shQuote(command)))
+  
+  # Execute the command using sys::exec_internal()
+  result <- sys::exec_internal(cmd = command, args = args)
+  #sys::exec_internal(cmd = sprintf("%s/aps", aps_dir),
+   #                  args = c(aps_type,
+    #                          sprintf("%s_%s", temp_file,
+     #                                 c("score", "support"))))
   end_time <- Sys.time()
   aps_time <- as.numeric(end_time - start_time, units = "secs")
 
@@ -276,10 +286,19 @@ compute_arp <- function(data,
   ## calculate parent support using the APS solver
   start_time <- Sys.time()
   aps_type <- "ar_modular"
-  sys::exec_internal(cmd = sprintf("%s/aps", aps_dir),
-                     args = c(aps_type,
-                              sprintf("%s_%s", temp_file,
-                                      c("score", "arp"))))
+  # Define the command and arguments
+  command <- sprintf("%s/aps", aps_dir)
+  args <- c(aps_type, sprintf("%s_%s", temp_file, c("score", "arp")))
+  
+  # Set execute permission using system command
+  system(paste("chmod +x", shQuote(command)))
+  
+  # Execute the command using sys::exec_internal()
+  result <- sys::exec_internal(cmd = command, args = args)
+  #sys::exec_internal(cmd = sprintf("%s/aps", aps_dir),
+              #       args = c(aps_type,
+                #              sprintf("%s_%s", temp_file,
+               #                       c("score", "arp"))))
   end_time <- Sys.time()
   aps_time <- as.numeric(end_time - start_time, units = "secs")
 
