@@ -229,6 +229,15 @@ compute_ps <- function(data,
    #                  args = c(aps_type,
     #                          sprintf("%s_%s", temp_file,
      #                                 c("score", "support"))))
+  
+  # Check the result
+  if (result$status != 0) {
+    cat("Command execution failed:\n")
+    cat("Standard Output:\n", result$stdout, "\n")
+    cat("Standard Error:\n", result$stderr, "\n")
+  }
+  
+  
   end_time <- Sys.time()
   aps_time <- as.numeric(end_time - start_time, units = "secs")
 
